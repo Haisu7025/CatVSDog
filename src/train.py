@@ -13,12 +13,13 @@ from torch.optim.lr_scheduler import LambdaLR as LR_Policy
 
 opt = {
     'batch_size': 10,
-    'cuda': False,
+    'cuda': True,
     'lr': 0.001,
     'momentum': 0.9,
     'lr_decay': 0.7,
     'weight_decay': 0.0001,
-    'max_epochs': 2000
+    'max_epochs': 2000,
+    'lr_decay_epoch':50,
 }
 
 
@@ -67,9 +68,9 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
         optimizer.step()
 
-        if batch_x % 50 == 0:
+        if batch_x % 10 == 0:
             log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3}'.format(
-                epoch, batch_x, len(train_loader), losses)
+                epoch, batch_x, len(train_loader), losses.data.cpu().numpy())
             losses = 0
             print log_str
 

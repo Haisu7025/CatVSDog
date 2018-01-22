@@ -26,8 +26,11 @@ class CatDogDataset(data.Dataset):
 
     def __len__(self):
         # length of data
-        return len(self.data_list)
-
+        if self.train:
+            return len(self.train_data_list)
+        else:
+            return len(self.test_data_list)
+        
     def __getitem__(self, idx):
         # get item
         if self.train == True:

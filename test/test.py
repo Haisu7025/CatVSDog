@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image
+import torch
 
-float a = 1
-print a / 5
+v = torch.autograd.Variable(torch.FloatTensor([1]))
+print v.data.numpy()
