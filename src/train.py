@@ -2,8 +2,10 @@
 
 import torch
 import datasets
-import models
+import Inception3
+import Resnet
 import time
+import evaluate
 import torch.optim
 from torch.utils import data
 from torchvision import transforms
@@ -12,7 +14,7 @@ from torch.optim.lr_scheduler import LambdaLR as LR_Policy
 
 
 opt = {
-    'batch_size': 10,
+    'batch_size': 50,
     'cuda': True,
     'lr': 0.001,
     'momentum': 0.9,
@@ -20,6 +22,7 @@ opt = {
     'weight_decay': 0.0001,
     'max_epochs': 2000,
     'lr_decay_epoch':50,
+    'check_freq':1,
 }
 
 
@@ -60,7 +63,10 @@ def train(train_loader, model, criterion, optimizer, epoch):
         res = model(img_var)
         # print '!!!', res
         # print '###', label
-        loss = criterion(res, label_var)
+        if criterion is None:
+            loss = torch.nn.functional.binary_cross_entropy(res, label_var)
+        else:
+            loss = criterion(res, label_var)
         losses += loss
 
         optimizer.zero_grad()
@@ -68,9 +74,10 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
         optimizer.step()
 
-        if batch_x % 10 == 0:
-            log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3}'.format(
-                epoch, batch_x, len(train_loader), losses.data.cpu().numpy())
+        if batch_x % 10 == 0 and batch_x != 0:
+            losses = losses / 10
+            log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4}'.format(
+                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses.data.cpu().numpy())
             losses = 0
             print log_str
 
@@ -91,26 +98,41 @@ def main():
         shuffle=True,
         num_workers=2,
     )
+    print '===================BATCH:',opt['batch_size'],'======================'
 
-    model = models.Inception3(aux_logits=False)
-    criterion = torch.nn.MSELoss()
+    print '===================LENGTH:',len(myLoader),'======================'
+
+    model = Resnet.Resnet()
+    # model = Inception3.Inception3(aux_logits=False)
+    # init model
+    init_model = ''
+    if init_model != '':
+        print 'Loading pre-trained model from {0}!'.format(init_model)
+        model.load_state_dict(torch.load(init_model))
+
+    # criterion = torch.nn.MSELoss()
 
     if opt['cuda']:
         print 'Using GPU to Shift the Calculation!'
         model = model.cuda()
-        criterion = criterion.cuda()
+        # criterion = criterion.cuda()
 
-    optimizer = torch.optim.SGD(
-        model.parameters(), opt['lr'], momentum=0, weight_decay=opt['weight_decay'])
+    # optimizer = torch.optim.SGD(
+        # model.parameters(), opt['lr'], momentum=0, weight_decay=opt['weight_decay'])
+
+    optimizer = torch.optim.Adam(model.parameters(), opt['lr'])
 
     def lambda_lr(epoch): return opt['lr_decay'] ** ((epoch + 1) //
                                                      opt['lr_decay_epoch'])  # poly policy
 
     for epoch in range(opt['max_epochs']):
         # train for one epoch
-        train(myLoader, model, criterion, optimizer, epoch)
-
-        LR_Policy(optimizer, opt['lr'], lambda_lr(epoch))
+        train(myLoader, model, None, optimizer, epoch)
+        if (epoch + 1) % opt['check_freq'] == 0:
+            path_checkpoint = '{0}/{1}_state_epoch{2}.pth'.format('checkpoints', model.__class__.__name__, epoch + 1)
+            torch.save(model.state_dict(), path_checkpoint)
+            evaluate.eval(path_checkpoint)
+        # LR_Policy(optimizer, opt['lr'], lambda_lr(epoch))
 
 
 if __name__ == '__main__':

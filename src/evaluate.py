@@ -2,7 +2,8 @@
 
 import torch
 import datasets
-import models
+import Inception3
+import Resnet
 import time
 import torch.optim
 from torch.utils import data
@@ -45,13 +46,23 @@ def test(test_loader, model):
 
         # calculate accuracy
         acc = 0.0
+
+        res_array = res.data.cpu().numpy()
+        label_array = label.numpy()
+
         for i in range(opt['batch_size']):
-            if res[i] == label[i]:
+            tmp = res_array[i]
+            match = 0
+            if tmp[0] < 0.5:
+                match = 0
+            else:
+                match = 1
+            if match == label_array[i][0]:
                 acc += 1.0
 
         acc = acc / opt['batch_size']
 
-        print 'Testing Accuracy:{.3f}'.format(acc)
+        print 'Testing Accuracy:{0}'.format(acc)
         return acc
 
 
@@ -72,7 +83,7 @@ def eval(trained_model=''):
         num_workers=2,
     )
 
-    model = models.Inception3(aux_logits=False)
+    model = Resnet.Resnet()
     if trained_model != '':
         model.load_state_dict(torch.load(trained_model))
 
@@ -100,7 +111,7 @@ def main():
         num_workers=2,
     )
 
-    model = models.Inception3(aux_logits=False)
+    model = Inception3.Inception3(aux_logits=False)
 
     if opt['init_model'] != '':
         print 'Load model:', opt['init_model']

@@ -5,8 +5,8 @@ import torch
 import os
 import numpy as np
 
-WIDTH = 300
-HEIGHT = 300
+WIDTH = 224
+HEIGHT = 224
 
 
 class CatDogDataset(data.Dataset):

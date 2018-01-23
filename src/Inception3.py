@@ -101,6 +101,7 @@ class Inception3(nn.Module):
         # 2048
         x = self.group1(x)
         # 1000 (num_classes)
+        x = F.sigmoid(x)
         if self.training and self.aux_logits:
             return x, aux
         return x
