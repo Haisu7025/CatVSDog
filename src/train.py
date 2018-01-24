@@ -41,7 +41,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
     model.train()
 
     losses = 0
-    acc = 0
+    acc = 0.0
 
     for batch_x, batch_y in enumerate(train_loader):
         label = batch_y[:][1]
@@ -70,20 +70,23 @@ def train(train_loader, model, criterion, optimizer, epoch):
             loss = torch.nn.functional.binary_cross_entropy(res, label_var)
         else:
             loss = criterion(res, label_var)
-        losses += loss
+
+        loss_d = loss.data.cpu().numpy()
+        losses += loss_d
 
         optimizer.zero_grad()
         loss.backward()
 
         optimizer.step()
 
-        if batch_x % 100 == 0 and batch_x != 0:
-            losses = losses / 10
-            # acc = evaluate.eval(model)
+        if batch_x % 300 == 0 and batch_x != 0:
+            losses = losses / 300
+            acc = evaluate.eval(model)
             log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4} Accuracy {5}'.format(
-                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses.data.cpu().numpy(), acc)
+                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses, acc)
             losses = 0
-            logger.info(log_str)        
+            logger.info(log_str)     
+
 
 def main():
     global opt

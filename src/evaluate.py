@@ -26,6 +26,7 @@ def test(test_loader, model):
 
     # evaluate mode
     model.eval()
+    acc = 0.0
     for batch_x, batch_y in enumerate(test_loader):
         img = batch_y[:][0]
         label = batch_y[:][1]
@@ -45,7 +46,7 @@ def test(test_loader, model):
         res = model(img_var)
 
         # calculate accuracy
-        acc = 0.0
+        acc_batch = 0.0
 
         res_array = res.data.cpu().numpy()
         label_array = label.numpy()
@@ -58,11 +59,13 @@ def test(test_loader, model):
             else:
                 match = 1
             if match == label_array[i][0]:
-                acc += 1.0
+                acc_batch += 1.0
 
-        acc = acc / opt['batch_size']
-
-        return acc
+        acc_batch = acc_batch / opt['batch_size']
+        acc += acc_batch
+        
+    return acc / len(test_loader)
+    
 
 
 def eval(model):
@@ -82,11 +85,9 @@ def eval(model):
     )
     
     if opt['cuda']:
-        print 'Using GPU to Shift the Calculation!'
         model = model.cuda()
-
+    
     return test(myLoader, model)
-
 
 def main():
     global opt
