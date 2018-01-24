@@ -5,6 +5,7 @@ import datasets
 import Inception3
 import Resnet
 import time
+import logger as lg
 import evaluate
 import torch.optim
 from torch.utils import data
@@ -22,10 +23,10 @@ opt = {
     'weight_decay': 0.0001,
     'max_epochs': 2000,
     'lr_decay_epoch':50,
-    'check_freq':1,
+    'check_freq':10,
 }
 
-
+logger = lg.init_logger()
 # for batch_x, batch_y in enumerate(myLoader):
 #     print batch_x
 #     print batch_y[0]
@@ -34,6 +35,7 @@ opt = {
 
 def train(train_loader, model, criterion, optimizer, epoch):
     global opt
+    global logger
 
     # training mode
     model.train()
@@ -79,17 +81,17 @@ def train(train_loader, model, criterion, optimizer, epoch):
             log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4}'.format(
                 epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses.data.cpu().numpy())
             losses = 0
-            print log_str
+            logger.info(log_str)
 
 
 def main():
     global opt
+    global logger
 
     myTransforms = transforms.Compose([
         transforms.ToTensor(),
     ])
     myDataset = datasets.CatDogDataset(
-        num=9999,
         transform=myTransforms,
         train=True)
     myLoader = data.DataLoader(
@@ -107,13 +109,13 @@ def main():
     # init model
     init_model = ''
     if init_model != '':
-        print 'Loading pre-trained model from {0}!'.format(init_model)
+        logger.info('Loading pre-trained model from {0}!'.format(init_model))
         model.load_state_dict(torch.load(init_model))
 
     # criterion = torch.nn.MSELoss()
 
     if opt['cuda']:
-        print 'Using GPU to Shift the Calculation!'
+        logger.info('Using GPU to Shift the Calculation!')
         model = model.cuda()
         # criterion = criterion.cuda()
 
@@ -131,7 +133,8 @@ def main():
         if (epoch + 1) % opt['check_freq'] == 0:
             path_checkpoint = '{0}/{1}_state_epoch{2}.pth'.format('checkpoints', model.__class__.__name__, epoch + 1)
             torch.save(model.state_dict(), path_checkpoint)
-            evaluate.eval(path_checkpoint)
+            acc = evaluate.eval(path_checkpoint)
+            logger.info('Testing Accuracy:{0}'.format(acc))
         # LR_Policy(optimizer, opt['lr'], lambda_lr(epoch))
 
 

@@ -12,12 +12,12 @@ from torch.autograd import Variable
 
 opt = {
     'batch_size': 50,
-    'cuda': False,
+    'cuda': True,
     'lr': 0.001,
     'momentum': 0.9,
     'lr_decay': 0.7,
     'weight_decay': 0.0001,
-    'init_model': ''
+    'init_model': 'checkpoints/Resnet_state_epoch1000.pth'
 }
 
 
@@ -62,7 +62,6 @@ def test(test_loader, model):
 
         acc = acc / opt['batch_size']
 
-        print 'Testing Accuracy:{0}'.format(acc)
         return acc
 
 
@@ -73,13 +72,12 @@ def eval(trained_model=''):
         transforms.ToTensor(),
     ])
     myDataset = datasets.CatDogDataset(
-        num=9999,
         transform=myTransforms,
         train=False)
     myLoader = data.DataLoader(
         dataset=myDataset,
         batch_size=opt['batch_size'],
-        shuffle=True,
+        shuffle=False,
         num_workers=2,
     )
 
@@ -91,7 +89,7 @@ def eval(trained_model=''):
         print 'Using GPU to Shift the Calculation!'
         model = model.cuda()
 
-    test(myLoader, model)
+    return test(myLoader, model)
 
 
 def main():
@@ -101,7 +99,6 @@ def main():
         transforms.ToTensor(),
     ])
     myDataset = datasets.CatDogDataset(
-        num=9999,
         transform=myTransforms,
         train=False)
     myLoader = data.DataLoader(
@@ -111,11 +108,11 @@ def main():
         num_workers=2,
     )
 
-    model = Inception3.Inception3(aux_logits=False)
-
+    # model = Inception3.Inception3(aux_logits=False)
+    model = Resnet.Resnet()
     if opt['init_model'] != '':
         print 'Load model:', opt['init_model']
-        model.load_state_dict(opt['init_model'])
+        model.load_state_dict(torch.load(opt['init_model']))
 
     if opt['cuda']:
         print 'Using GPU to Shift the Calculation!'
@@ -123,12 +120,12 @@ def main():
 
     avg_acc = 0.0
     max_acc = 0.0
-    for epoch in range(100 / opt['batch_size']):
+    for epoch in range(2000 / opt['batch_size']):
         acc = test(myLoader, model)
         avg_acc += acc
         if acc > max_acc:
             max_acc = acc
-    print 'Average accuracy:{.3f}, Maximum accuracy:{.3f}'.format(
+    print 'Average accuracy:{0}, Maximum accuracy:{1}'.format(
         avg_acc, max_acc)
 
 
