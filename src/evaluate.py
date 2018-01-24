@@ -65,7 +65,7 @@ def test(test_loader, model):
         return acc
 
 
-def eval(trained_model=''):
+def eval(model):
     global opt
 
     myTransforms = transforms.Compose([
@@ -80,11 +80,7 @@ def eval(trained_model=''):
         shuffle=False,
         num_workers=2,
     )
-
-    model = Resnet.Resnet()
-    if trained_model != '':
-        model.load_state_dict(torch.load(trained_model))
-
+    
     if opt['cuda']:
         print 'Using GPU to Shift the Calculation!'
         model = model.cuda()

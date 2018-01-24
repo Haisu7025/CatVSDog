@@ -23,10 +23,10 @@ opt = {
     'weight_decay': 0.0001,
     'max_epochs': 2000,
     'lr_decay_epoch':50,
-    'check_freq':10,
+    'save_freq':10,
 }
 
-logger = lg.init_logger()
+logger = lg.init_logger('train')
 # for batch_x, batch_y in enumerate(myLoader):
 #     print batch_x
 #     print batch_y[0]
@@ -41,6 +41,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
     model.train()
 
     losses = 0
+    acc = 0
 
     for batch_x, batch_y in enumerate(train_loader):
         label = batch_y[:][1]
@@ -76,13 +77,13 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
         optimizer.step()
 
-        if batch_x % 10 == 0 and batch_x != 0:
+        if batch_x % 100 == 0 and batch_x != 0:
             losses = losses / 10
-            log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4}'.format(
-                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses.data.cpu().numpy())
+            # acc = evaluate.eval(model)
+            log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4} Accuracy {5}'.format(
+                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses.data.cpu().numpy(), acc)
             losses = 0
-            logger.info(log_str)
-
+            logger.info(log_str)        
 
 def main():
     global opt
@@ -130,11 +131,9 @@ def main():
     for epoch in range(opt['max_epochs']):
         # train for one epoch
         train(myLoader, model, None, optimizer, epoch)
-        if (epoch + 1) % opt['check_freq'] == 0:
+        if (epoch + 1) % opt['save_freq'] == 0:
             path_checkpoint = '{0}/{1}_state_epoch{2}.pth'.format('checkpoints', model.__class__.__name__, epoch + 1)
             torch.save(model.state_dict(), path_checkpoint)
-            acc = evaluate.eval(path_checkpoint)
-            logger.info('Testing Accuracy:{0}'.format(acc))
         # LR_Policy(optimizer, opt['lr'], lambda_lr(epoch))
 
 
