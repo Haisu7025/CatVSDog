@@ -17,7 +17,8 @@ opt = {
     'momentum': 0.9,
     'lr_decay': 0.7,
     'weight_decay': 0.0001,
-    'init_model': 'checkpoints/Resnet_state_epoch1000.pth'
+    'init_model': 'checkpoints/Resnet_state_epoch1000.pth',
+    'init_epoch': 1010
 }
 
 

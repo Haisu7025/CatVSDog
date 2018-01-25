@@ -8,7 +8,7 @@ class Resnet(nn.Module):
         super(Resnet, self).__init__()
         # Conv1
         self.conv1 = nn.Sequential(
-            nn.Dropout(p = 0.5),
+            nn.Dropout2d(p = 0.5),
             nn.Conv2d(in_channels=3, out_channels=4, kernel_size=5),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2)
