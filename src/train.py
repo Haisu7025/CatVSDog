@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import torch
+import torchvision
 import datasets
 import Inception3
 import Resnet
@@ -109,6 +110,9 @@ def main():
     print '===================LENGTH:',len(myLoader),'======================'
 
     model = Resnet.Resnet()
+    # model = torchvision.models.resnet18(pretrained=True)
+    # num_ftrs = model.fc.in_features
+    # model.fc = torch.nn.Linear(num_ftrs, 1)
     # model = Inception3.Inception3(aux_logits=False)
     # init model
     init_model = ''

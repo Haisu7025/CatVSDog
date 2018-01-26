@@ -1,147 +1,119 @@
 # -*- coding:utf-8 -*-
 
-import torch
-import datasets
-import torchvision.models as models
+import os
 import time
-import logger as lg
-import evaluate
-import torch.optim
+import logger
+import torch
+import torchvision.datasets as datasets
+import torchvision.transforms as transforms
 from torch.utils import data
-from torchvision import transforms
 from torch.autograd import Variable
-import torch.optim.lr_scheduler as lr_scheduler
-
-opt = {
-    'batch_size': 50,
-    'cuda': True,
-    'lr': 0.001,
-    'momentum': 0.9,
-    'lr_decay': 0.7,
-    'weight_decay': 0.0001,
-    'max_epochs': 2000,
-    'lr_decay_epoch':50,
-    'save_freq':10,
-}
-
-logger = lg.init_logger('train')
-# for batch_x, batch_y in enumerate(myLoader):
-#     print batch_x
-#     print batch_y[0]
-#     break
+from torchvision import models
+from torch.optim import lr_scheduler
 
 
-def train(train_loader, model, scheduler, criterion, optimizer, epoch):
-    global opt
-    global logger
+log = logger.init_logger('resnet')
 
-    # training mode
-    model.train()
+def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, num_epochs = 25):
+    stime = time.time()
+    
+    best_model_state = model.state_dict()
+    best_acc = 0.0
 
-    losses = 0
-    acc = 0.0
+    for epoch in range(num_epochs):        
+        for phase in ['train', 'val']:
+            if phase == 'train':
+                scheduler.step()
+                model.train()
+            else:
+                model.eval()
+            
+            running_loss = 0.0
+            running_corrects = 0.0
 
-    for batch_x, batch_y in enumerate(train_loader):
-        scheduler.step()
+            for batch_x, batch_y in enumerate(dataloaders[phase]):
+                inputs, labels = batch_y
 
-        label = batch_y[:][1]
-        label = label.numpy()
-        label = torch.from_numpy(label).float()
-        img = batch_y[:][0]
+                if torch.cuda.is_available():
+                    inputs = inputs.cuda()
+                    labels = labels.cuda()
+                
+                inputs, labels = Variable(inputs), Variable(labels)
 
-        # transpose
-        torch.transpose(img, 1, 2)
-        torch.transpose(img, 2, 3)
+                optimizer.zero_grad()
 
-        # Variable
-        label_var = Variable(label)
-        img_var = Variable(img)
+                outputs = model(inputs)
+                _, preds = torch.max(outputs.data, 1)
+                loss = criterion(outputs, labels)
+                
+                if phase == 'train':
+                    loss.backward()
+                    optimizer.step()
 
-        # cuda?
-        if opt['cuda']:
-            label_var = label_var.cuda()
-            img_var = img_var.cuda()
+                if (batch_x + 1) % 200 == 0:
+                    log.info('{} --- Current batch:{}/{}  loss:{}'.format(phase, batch_x + 1, len(dataloaders[phase]), loss.data.cpu().numpy()))
+            
+                running_loss += loss.data[0]
+                running_corrects += torch.sum(preds == labels.data)
+            
+            epoch_loss = running_loss / dataset_sizes[phase]
+            epoch_acc = running_corrects / dataset_sizes[phase]
 
-        # forward and backward
-        res = model(img_var)
-        # print '!!!', res
-        # print '###', label
-        if criterion is None:
-            loss = torch.nn.functional.binary_cross_entropy(res, label_var)
-        else:
-            loss = criterion(res, label_var)
+            if phase == 'val':
+                log.info('Epoch [{}]/[{}] \t Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
 
-        loss_d = loss.data.cpu().numpy()
-        losses += loss_d
+            if phase == 'val' and epoch_acc > best_acc:
+                best_acc = epoch_acc
+                best_model_state = model.state_dict()
 
-        
-        optimizer.zero_grad()
-        loss.backward()
+            torch.save(model.state_dict(), 'checkpoints/{}_{}_state.pth'.format(epoch, phase))
+            log.info('Save module: checkpoints/{}_{}_state.pth'.format(epoch, phase))
+            
+    time_elapsed = time.time() - stime
+    log.info('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
+    log.info('Best validate accuracy: {:.4f}'.format(best_acc))
 
-        optimizer.step()
-
-        if batch_x % 300 == 0 and batch_x != 0:
-            losses = losses / 300
-            acc = evaluate.eval(model)
-            log_str = 'Epoch: [{0}][{1}/{2}]\t Loss {3} Avg Loss {4} Accuracy {5}'.format(
-                epoch, batch_x, len(train_loader), loss.data.cpu().numpy(), losses, acc)
-            losses = 0
-            logger.info(log_str)     
+    model.load_state_dict(best_model_state)
+    return model
 
 
 def main():
-    global opt
-    global logger
+    # data
+    data_dir = 'data_'
+    data_transforms = {
+        'train': transforms.Compose([
+            transforms.RandomSizedCrop(224),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ]),
+        'val': transforms.Compose([
+            transforms.Scale(256),
+            transforms.CenterCrop(224),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
+    }
+    image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
+    dataloaders = {x: data.DataLoader(image_datasets[x], batch_size=10, shuffle=True, num_workers=2) for x in ['train', 'val']}
+    dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
 
-    myTransforms = transforms.Compose([
-        transforms.RandomSizedCrop(224),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ])
-    myDataset = datasets.CatDogDataset(
-        transform=myTransforms,
-        train=True)
-    myLoader = data.DataLoader(
-        dataset=myDataset,
-        batch_size=opt['batch_size'],
-        shuffle=True,
-        num_workers=2,
-    )
-    print '===================BATCH:',opt['batch_size'],'======================'
-
-    print '===================LENGTH:',len(myLoader),'======================'
-
+    # model
     model = models.resnet18(pretrained=True)
-    num_ftrs = model.fc.in_features
-    model.fc = torch.nn.Linear(num_ftrs, 2)
+    num_frts = model.fc.in_features
+    model.fc = torch.nn.Linear(num_frts, 2)
 
-    # model = Inception3.Inception3(aux_logits=False)
-    # init model
-    init_model = ''
-    start_epoch = 0
-    if init_model != '':
-        logger.info('Loading pre-trained model from {0}!'.format(init_model))
-        model.load_state_dict(torch.load(init_model))
-        start_epoch = 1010
+    # train
     criterion = torch.nn.CrossEntropyLoss()
-
-    if opt['cuda']:
-        logger.info('Using GPU to Shift the Calculation!')
-        model = model.cuda()
-        criterion = criterion.cuda()
-
     optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 
-    for epoch in range(start_epoch, opt['max_epochs']):
-        # train for one epoch
-        train(myLoader, model, scheduler, criterion, optimizer, epoch)
-        if (epoch + 1) % opt['save_freq'] == 0:
-            path_checkpoint = '{0}/{1}_state_epoch{2}.pth'.format('checkpoints', model.__class__.__name__, epoch + 1)
-            torch.save(model.state_dict(), path_checkpoint)
-        # LR_Policy(optimizer, opt['lr'], lambda_lr(epoch))
+    if torch.cuda.is_available():
+        model = model.cuda()
+        # criterion = criterion.cuda()
 
+    model = train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler)
+    torch.save(model.state_dict(), 'trained_models/best_model.pth')
 
 if __name__ == '__main__':
     main()

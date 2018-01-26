@@ -1,0 +1,327 @@
+2018-01-26 16:20:18,319 INFO    : train --- Current batch:200/1600  loss:[ 0.12385722]
+2018-01-26 16:20:51,606 INFO    : train --- Current batch:400/1600  loss:[ 0.16952306]
+2018-01-26 16:21:24,929 INFO    : train --- Current batch:600/1600  loss:[ 0.28855455]
+2018-01-26 16:21:58,256 INFO    : train --- Current batch:800/1600  loss:[ 0.06684946]
+2018-01-26 16:22:31,740 INFO    : train --- Current batch:1000/1600  loss:[ 0.09224264]
+2018-01-26 16:23:05,102 INFO    : train --- Current batch:1200/1600  loss:[ 0.06260218]
+2018-01-26 16:23:38,436 INFO    : train --- Current batch:1400/1600  loss:[ 0.2098954]
+2018-01-26 16:24:11,780 INFO    : train --- Current batch:1600/1600  loss:[ 0.05122153]
+2018-01-26 16:24:11,829 INFO    : Save module: checkpoints/0_train_state.pth
+2018-01-26 16:24:21,909 INFO    : val --- Current batch:200/400  loss:[ 0.02182044]
+2018-01-26 16:24:31,881 INFO    : val --- Current batch:400/400  loss:[ 0.16654865]
+2018-01-26 16:24:31,881 INFO    : Epoch [0]/[24] 	 Loss: 0.00565865594332 	 Accuracy: 0.9758
+2018-01-26 16:24:31,933 INFO    : Save module: checkpoints/0_val_state.pth
+2018-01-26 16:25:04,947 INFO    : train --- Current batch:200/1600  loss:[ 0.00934913]
+2018-01-26 16:25:37,868 INFO    : train --- Current batch:400/1600  loss:[ 0.09193541]
+2018-01-26 16:26:10,830 INFO    : train --- Current batch:600/1600  loss:[ 0.0835492]
+2018-01-26 16:26:43,941 INFO    : train --- Current batch:800/1600  loss:[ 0.24448486]
+2018-01-26 16:27:16,988 INFO    : train --- Current batch:1000/1600  loss:[ 0.5461086]
+2018-01-26 16:27:49,986 INFO    : train --- Current batch:1200/1600  loss:[ 0.03866249]
+2018-01-26 16:28:22,969 INFO    : train --- Current batch:1400/1600  loss:[ 0.04741057]
+2018-01-26 16:28:56,159 INFO    : train --- Current batch:1600/1600  loss:[ 0.04274175]
+2018-01-26 16:28:56,483 INFO    : Save module: checkpoints/1_train_state.pth
+2018-01-26 16:29:08,568 INFO    : val --- Current batch:200/400  loss:[ 0.05096688]
+2018-01-26 16:29:18,326 INFO    : val --- Current batch:400/400  loss:[ 0.00149434]
+2018-01-26 16:29:18,327 INFO    : Epoch [1]/[24] 	 Loss: 0.003744041511 	 Accuracy: 0.9848
+2018-01-26 16:29:18,372 INFO    : Save module: checkpoints/1_val_state.pth
+2018-01-26 16:29:51,505 INFO    : train --- Current batch:200/1600  loss:[ 0.28096506]
+2018-01-26 16:30:24,813 INFO    : train --- Current batch:400/1600  loss:[ 0.00541784]
+2018-01-26 16:30:57,842 INFO    : train --- Current batch:600/1600  loss:[ 0.05796192]
+2018-01-26 16:31:30,906 INFO    : train --- Current batch:800/1600  loss:[ 0.04976946]
+2018-01-26 16:32:04,120 INFO    : train --- Current batch:1000/1600  loss:[ 0.16846576]
+2018-01-26 16:32:37,140 INFO    : train --- Current batch:1200/1600  loss:[ 0.27331489]
+2018-01-26 16:33:10,327 INFO    : train --- Current batch:1400/1600  loss:[ 0.00576719]
+2018-01-26 16:33:43,337 INFO    : train --- Current batch:1600/1600  loss:[ 0.02306668]
+2018-01-26 16:33:43,400 INFO    : Save module: checkpoints/2_train_state.pth
+2018-01-26 16:33:56,984 INFO    : val --- Current batch:200/400  loss:[ 0.00388955]
+2018-01-26 16:34:12,551 INFO    : val --- Current batch:400/400  loss:[ 0.01247442]
+2018-01-26 16:34:12,551 INFO    : Epoch [2]/[24] 	 Loss: 0.00394142055433 	 Accuracy: 0.9865
+2018-01-26 16:34:12,609 INFO    : Save module: checkpoints/2_val_state.pth
+2018-01-26 16:34:45,626 INFO    : train --- Current batch:200/1600  loss:[ 0.01315554]
+2018-01-26 16:35:18,920 INFO    : train --- Current batch:400/1600  loss:[ 0.02666881]
+2018-01-26 16:35:51,927 INFO    : train --- Current batch:600/1600  loss:[ 0.15275742]
+2018-01-26 16:36:25,115 INFO    : train --- Current batch:800/1600  loss:[ 0.3412593]
+2018-01-26 16:36:58,324 INFO    : train --- Current batch:1000/1600  loss:[ 0.08488783]
+2018-01-26 16:37:31,302 INFO    : train --- Current batch:1200/1600  loss:[ 0.23966508]
+2018-01-26 16:38:04,446 INFO    : train --- Current batch:1400/1600  loss:[ 0.14129785]
+2018-01-26 16:38:37,751 INFO    : train --- Current batch:1600/1600  loss:[ 0.25304514]
+2018-01-26 16:38:37,804 INFO    : Save module: checkpoints/3_train_state.pth
+2018-01-26 16:38:49,330 INFO    : val --- Current batch:200/400  loss:[ 0.00018167]
+2018-01-26 16:39:00,416 INFO    : val --- Current batch:400/400  loss:[ 0.0612873]
+2018-01-26 16:39:00,417 INFO    : Epoch [3]/[24] 	 Loss: 0.0036736860009 	 Accuracy: 0.9860
+2018-01-26 16:39:00,928 INFO    : Save module: checkpoints/3_val_state.pth
+2018-01-26 16:39:34,048 INFO    : train --- Current batch:200/1600  loss:[ 0.14078367]
+2018-01-26 16:40:07,215 INFO    : train --- Current batch:400/1600  loss:[ 0.13885871]
+2018-01-26 16:40:40,512 INFO    : train --- Current batch:600/1600  loss:[ 0.17366982]
+2018-01-26 16:41:13,564 INFO    : train --- Current batch:800/1600  loss:[ 0.03008838]
+2018-01-26 16:41:46,854 INFO    : train --- Current batch:1000/1600  loss:[ 0.10290074]
+2018-01-26 16:42:20,099 INFO    : train --- Current batch:1200/1600  loss:[ 0.02554872]
+2018-01-26 16:42:53,252 INFO    : train --- Current batch:1400/1600  loss:[ 0.27003822]
+2018-01-26 16:43:26,656 INFO    : train --- Current batch:1600/1600  loss:[ 0.09933227]
+2018-01-26 16:43:26,758 INFO    : Save module: checkpoints/4_train_state.pth
+2018-01-26 16:43:40,435 INFO    : val --- Current batch:200/400  loss:[ 0.00039532]
+2018-01-26 16:43:52,638 INFO    : val --- Current batch:400/400  loss:[ 0.0004734]
+2018-01-26 16:43:52,638 INFO    : Epoch [4]/[24] 	 Loss: 0.00357755180522 	 Accuracy: 0.9848
+2018-01-26 16:43:52,696 INFO    : Save module: checkpoints/4_val_state.pth
+2018-01-26 16:44:25,791 INFO    : train --- Current batch:200/1600  loss:[ 0.00673562]
+2018-01-26 16:44:58,771 INFO    : train --- Current batch:400/1600  loss:[ 0.08195535]
+2018-01-26 16:45:31,941 INFO    : train --- Current batch:600/1600  loss:[ 0.11522217]
+2018-01-26 16:46:05,221 INFO    : train --- Current batch:800/1600  loss:[ 0.12358066]
+2018-01-26 16:46:38,358 INFO    : train --- Current batch:1000/1600  loss:[ 0.08674111]
+2018-01-26 16:47:11,633 INFO    : train --- Current batch:1200/1600  loss:[ 0.04018045]
+2018-01-26 16:47:44,973 INFO    : train --- Current batch:1400/1600  loss:[ 0.04462221]
+2018-01-26 16:48:18,072 INFO    : train --- Current batch:1600/1600  loss:[ 0.09045833]
+2018-01-26 16:48:18,380 INFO    : Save module: checkpoints/5_train_state.pth
+2018-01-26 16:48:34,023 INFO    : val --- Current batch:200/400  loss:[ 0.00224042]
+2018-01-26 16:48:43,976 INFO    : val --- Current batch:400/400  loss:[ 0.05027938]
+2018-01-26 16:48:43,977 INFO    : Epoch [5]/[24] 	 Loss: 0.00385264527142 	 Accuracy: 0.9860
+2018-01-26 16:48:44,108 INFO    : Save module: checkpoints/5_val_state.pth
+2018-01-26 16:49:17,412 INFO    : train --- Current batch:200/1600  loss:[ 0.02131837]
+2018-01-26 16:49:50,727 INFO    : train --- Current batch:400/1600  loss:[ 0.11534931]
+2018-01-26 16:50:23,924 INFO    : train --- Current batch:600/1600  loss:[ 0.01784385]
+2018-01-26 16:50:57,219 INFO    : train --- Current batch:800/1600  loss:[ 0.02587588]
+2018-01-26 16:51:30,484 INFO    : train --- Current batch:1000/1600  loss:[ 0.08822283]
+2018-01-26 16:52:03,640 INFO    : train --- Current batch:1200/1600  loss:[ 0.00194552]
+2018-01-26 16:52:36,879 INFO    : train --- Current batch:1400/1600  loss:[ 0.03625504]
+2018-01-26 16:53:10,343 INFO    : train --- Current batch:1600/1600  loss:[ 0.00936565]
+2018-01-26 16:53:10,465 INFO    : Save module: checkpoints/6_train_state.pth
+2018-01-26 16:53:24,556 INFO    : val --- Current batch:200/400  loss:[ 0.02685639]
+2018-01-26 16:53:36,552 INFO    : val --- Current batch:400/400  loss:[ 0.06260738]
+2018-01-26 16:53:36,552 INFO    : Epoch [6]/[24] 	 Loss: 0.00374089236371 	 Accuracy: 0.9862
+2018-01-26 16:53:36,612 INFO    : Save module: checkpoints/6_val_state.pth
+2018-01-26 16:54:09,838 INFO    : train --- Current batch:200/1600  loss:[ 0.0797285]
+2018-01-26 16:54:43,240 INFO    : train --- Current batch:400/1600  loss:[ 0.03547262]
+2018-01-26 16:55:16,626 INFO    : train --- Current batch:600/1600  loss:[ 0.26809621]
+2018-01-26 16:55:49,824 INFO    : train --- Current batch:800/1600  loss:[ 0.00503931]
+2018-01-26 16:56:23,034 INFO    : train --- Current batch:1000/1600  loss:[ 0.02516841]
+2018-01-26 16:56:56,422 INFO    : train --- Current batch:1200/1600  loss:[ 0.00938141]
+2018-01-26 16:57:29,784 INFO    : train --- Current batch:1400/1600  loss:[ 0.03721483]
+2018-01-26 16:58:03,032 INFO    : train --- Current batch:1600/1600  loss:[ 0.01581446]
+2018-01-26 16:58:03,085 INFO    : Save module: checkpoints/7_train_state.pth
+2018-01-26 16:58:17,136 INFO    : val --- Current batch:200/400  loss:[ 0.03852811]
+2018-01-26 16:58:29,778 INFO    : val --- Current batch:400/400  loss:[ 0.0018488]
+2018-01-26 16:58:29,779 INFO    : Epoch [7]/[24] 	 Loss: 0.00344079444611 	 Accuracy: 0.9865
+2018-01-26 16:58:30,174 INFO    : Save module: checkpoints/7_val_state.pth
+2018-01-26 16:59:03,329 INFO    : train --- Current batch:200/1600  loss:[ 0.19969556]
+2018-01-26 16:59:36,691 INFO    : train --- Current batch:400/1600  loss:[ 0.05183031]
+2018-01-26 17:00:09,896 INFO    : train --- Current batch:600/1600  loss:[ 0.03004894]
+2018-01-26 17:00:42,956 INFO    : train --- Current batch:800/1600  loss:[ 0.09365208]
+2018-01-26 17:01:16,636 INFO    : train --- Current batch:1000/1600  loss:[ 0.02278353]
+2018-01-26 17:01:49,963 INFO    : train --- Current batch:1200/1600  loss:[ 0.00445353]
+2018-01-26 17:02:23,134 INFO    : train --- Current batch:1400/1600  loss:[ 0.00556711]
+2018-01-26 17:02:56,993 INFO    : train --- Current batch:1600/1600  loss:[ 0.00180304]
+2018-01-26 17:02:57,124 INFO    : Save module: checkpoints/8_train_state.pth
+2018-01-26 17:03:17,501 INFO    : val --- Current batch:200/400  loss:[ 0.0308477]
+2018-01-26 17:03:28,106 INFO    : val --- Current batch:400/400  loss:[ 0.00857825]
+2018-01-26 17:03:28,106 INFO    : Epoch [8]/[24] 	 Loss: 0.00327259766049 	 Accuracy: 0.9882
+2018-01-26 17:03:28,152 INFO    : Save module: checkpoints/8_val_state.pth
+2018-01-26 17:04:01,217 INFO    : train --- Current batch:200/1600  loss:[ 0.02650557]
+2018-01-26 17:04:34,487 INFO    : train --- Current batch:400/1600  loss:[ 0.17069149]
+2018-01-26 17:05:07,622 INFO    : train --- Current batch:600/1600  loss:[ 0.09036352]
+2018-01-26 17:05:40,964 INFO    : train --- Current batch:800/1600  loss:[ 0.01312093]
+2018-01-26 17:06:14,388 INFO    : train --- Current batch:1000/1600  loss:[ 0.03480317]
+2018-01-26 17:06:47,681 INFO    : train --- Current batch:1200/1600  loss:[ 0.02201754]
+2018-01-26 17:07:20,998 INFO    : train --- Current batch:1400/1600  loss:[ 0.09376966]
+2018-01-26 17:07:54,207 INFO    : train --- Current batch:1600/1600  loss:[ 0.02481644]
+2018-01-26 17:07:54,327 INFO    : Save module: checkpoints/9_train_state.pth
+2018-01-26 17:08:08,887 INFO    : val --- Current batch:200/400  loss:[ 0.00678896]
+2018-01-26 17:08:21,263 INFO    : val --- Current batch:400/400  loss:[ 0.02214211]
+2018-01-26 17:08:21,264 INFO    : Epoch [9]/[24] 	 Loss: 0.00353652712053 	 Accuracy: 0.9860
+2018-01-26 17:08:21,393 INFO    : Save module: checkpoints/9_val_state.pth
+2018-01-26 17:08:54,937 INFO    : train --- Current batch:200/1600  loss:[ 0.29785323]
+2018-01-26 17:09:28,593 INFO    : train --- Current batch:400/1600  loss:[ 0.03116785]
+2018-01-26 17:10:01,930 INFO    : train --- Current batch:600/1600  loss:[ 0.02153679]
+2018-01-26 17:10:35,570 INFO    : train --- Current batch:800/1600  loss:[ 0.12991008]
+2018-01-26 17:11:08,988 INFO    : train --- Current batch:1000/1600  loss:[ 0.00735245]
+2018-01-26 17:11:42,383 INFO    : train --- Current batch:1200/1600  loss:[ 0.09075154]
+2018-01-26 17:12:15,747 INFO    : train --- Current batch:1400/1600  loss:[ 0.0696167]
+2018-01-26 17:12:48,956 INFO    : train --- Current batch:1600/1600  loss:[ 0.033542]
+2018-01-26 17:12:49,673 INFO    : Save module: checkpoints/10_train_state.pth
+2018-01-26 17:13:00,572 INFO    : val --- Current batch:200/400  loss:[ 0.00370929]
+2018-01-26 17:13:13,807 INFO    : val --- Current batch:400/400  loss:[ 0.14797564]
+2018-01-26 17:13:13,807 INFO    : Epoch [10]/[24] 	 Loss: 0.00315421362537 	 Accuracy: 0.9882
+2018-01-26 17:13:13,856 INFO    : Save module: checkpoints/10_val_state.pth
+2018-01-26 17:13:47,176 INFO    : train --- Current batch:200/1600  loss:[ 0.01453189]
+2018-01-26 17:14:20,933 INFO    : train --- Current batch:400/1600  loss:[ 0.02203807]
+2018-01-26 17:14:54,323 INFO    : train --- Current batch:600/1600  loss:[ 0.49836731]
+2018-01-26 17:15:27,781 INFO    : train --- Current batch:800/1600  loss:[ 0.0183553]
+2018-01-26 17:16:01,273 INFO    : train --- Current batch:1000/1600  loss:[ 0.20105183]
+2018-01-26 17:16:34,421 INFO    : train --- Current batch:1200/1600  loss:[ 0.2064786]
+2018-01-26 17:17:07,795 INFO    : train --- Current batch:1400/1600  loss:[ 0.00653217]
+2018-01-26 17:17:41,096 INFO    : train --- Current batch:1600/1600  loss:[ 0.01747582]
+2018-01-26 17:17:41,150 INFO    : Save module: checkpoints/11_train_state.pth
+2018-01-26 17:17:54,558 INFO    : val --- Current batch:200/400  loss:[ 0.00035441]
+2018-01-26 17:18:04,456 INFO    : val --- Current batch:400/400  loss:[ 0.000508]
+2018-01-26 17:18:04,457 INFO    : Epoch [11]/[24] 	 Loss: 0.00290843829231 	 Accuracy: 0.9890
+2018-01-26 17:18:04,858 INFO    : Save module: checkpoints/11_val_state.pth
+2018-01-26 17:18:38,130 INFO    : train --- Current batch:200/1600  loss:[ 0.17031434]
+2018-01-26 17:19:11,359 INFO    : train --- Current batch:400/1600  loss:[ 0.07302663]
+2018-01-26 17:19:45,166 INFO    : train --- Current batch:600/1600  loss:[ 0.03278095]
+2018-01-26 17:20:18,298 INFO    : train --- Current batch:800/1600  loss:[ 0.09466591]
+2018-01-26 17:20:51,607 INFO    : train --- Current batch:1000/1600  loss:[ 0.00613521]
+2018-01-26 17:21:24,788 INFO    : train --- Current batch:1200/1600  loss:[ 0.1190562]
+2018-01-26 17:21:58,293 INFO    : train --- Current batch:1400/1600  loss:[ 0.0636045]
+2018-01-26 17:22:31,735 INFO    : train --- Current batch:1600/1600  loss:[ 0.06680979]
+2018-01-26 17:22:31,798 INFO    : Save module: checkpoints/12_train_state.pth
+2018-01-26 17:22:45,026 INFO    : val --- Current batch:200/400  loss:[ 0.0004817]
+2018-01-26 17:22:56,431 INFO    : val --- Current batch:400/400  loss:[ 0.0001734]
+2018-01-26 17:22:56,431 INFO    : Epoch [12]/[24] 	 Loss: 0.00295494800632 	 Accuracy: 0.9890
+2018-01-26 17:22:56,485 INFO    : Save module: checkpoints/12_val_state.pth
+2018-01-26 17:23:29,737 INFO    : train --- Current batch:200/1600  loss:[ 0.01622324]
+2018-01-26 17:24:03,236 INFO    : train --- Current batch:400/1600  loss:[ 0.0121737]
+2018-01-26 17:24:36,478 INFO    : train --- Current batch:600/1600  loss:[ 0.07985549]
+2018-01-26 17:25:09,958 INFO    : train --- Current batch:800/1600  loss:[ 0.05208892]
+2018-01-26 17:25:43,529 INFO    : train --- Current batch:1000/1600  loss:[ 0.07713269]
+2018-01-26 17:26:16,989 INFO    : train --- Current batch:1200/1600  loss:[ 0.20684543]
+2018-01-26 17:26:50,234 INFO    : train --- Current batch:1400/1600  loss:[ 0.06915782]
+2018-01-26 17:27:23,503 INFO    : train --- Current batch:1600/1600  loss:[ 0.08220284]
+2018-01-26 17:27:23,651 INFO    : Save module: checkpoints/13_train_state.pth
+2018-01-26 17:27:38,067 INFO    : val --- Current batch:200/400  loss:[ 0.00073221]
+2018-01-26 17:27:50,288 INFO    : val --- Current batch:400/400  loss:[ 0.00023887]
+2018-01-26 17:27:50,289 INFO    : Epoch [13]/[24] 	 Loss: 0.00291650123152 	 Accuracy: 0.9888
+2018-01-26 17:27:50,338 INFO    : Save module: checkpoints/13_val_state.pth
+2018-01-26 17:28:23,813 INFO    : train --- Current batch:200/1600  loss:[ 0.02727387]
+2018-01-26 17:28:57,363 INFO    : train --- Current batch:400/1600  loss:[ 0.26882595]
+2018-01-26 17:29:30,428 INFO    : train --- Current batch:600/1600  loss:[ 0.22416544]
+2018-01-26 17:30:03,684 INFO    : train --- Current batch:800/1600  loss:[ 0.05363157]
+2018-01-26 17:30:37,255 INFO    : train --- Current batch:1000/1600  loss:[ 0.12410299]
+2018-01-26 17:31:10,629 INFO    : train --- Current batch:1200/1600  loss:[ 0.00046368]
+2018-01-26 17:31:44,056 INFO    : train --- Current batch:1400/1600  loss:[ 0.00217739]
+2018-01-26 17:32:17,388 INFO    : train --- Current batch:1600/1600  loss:[ 0.15969738]
+2018-01-26 17:32:18,050 INFO    : Save module: checkpoints/14_train_state.pth
+2018-01-26 17:32:33,324 INFO    : val --- Current batch:200/400  loss:[ 0.08773226]
+2018-01-26 17:32:43,198 INFO    : val --- Current batch:400/400  loss:[  2.89916989e-05]
+2018-01-26 17:32:43,198 INFO    : Epoch [14]/[24] 	 Loss: 0.00290535759383 	 Accuracy: 0.9882
+2018-01-26 17:32:43,243 INFO    : Save module: checkpoints/14_val_state.pth
+2018-01-26 17:33:16,491 INFO    : train --- Current batch:200/1600  loss:[ 0.0100939]
+2018-01-26 17:33:49,548 INFO    : train --- Current batch:400/1600  loss:[ 0.00475372]
+2018-01-26 17:34:22,753 INFO    : train --- Current batch:600/1600  loss:[ 0.36645597]
+2018-01-26 17:34:55,860 INFO    : train --- Current batch:800/1600  loss:[ 0.02427102]
+2018-01-26 17:35:29,392 INFO    : train --- Current batch:1000/1600  loss:[ 0.11171045]
+2018-01-26 17:36:02,724 INFO    : train --- Current batch:1200/1600  loss:[ 0.02659808]
+2018-01-26 17:36:36,117 INFO    : train --- Current batch:1400/1600  loss:[ 0.01027856]
+2018-01-26 17:37:09,658 INFO    : train --- Current batch:1600/1600  loss:[ 0.00182128]
+2018-01-26 17:37:09,782 INFO    : Save module: checkpoints/15_train_state.pth
+2018-01-26 17:37:23,566 INFO    : val --- Current batch:200/400  loss:[ 0.00345896]
+2018-01-26 17:37:36,056 INFO    : val --- Current batch:400/400  loss:[ 0.00010006]
+2018-01-26 17:37:36,056 INFO    : Epoch [15]/[24] 	 Loss: 0.00305338487232 	 Accuracy: 0.9872
+2018-01-26 17:37:36,483 INFO    : Save module: checkpoints/15_val_state.pth
+2018-01-26 17:38:09,722 INFO    : train --- Current batch:200/1600  loss:[ 0.07410078]
+2018-01-26 17:38:42,732 INFO    : train --- Current batch:400/1600  loss:[ 0.08746115]
+2018-01-26 17:39:16,194 INFO    : train --- Current batch:600/1600  loss:[ 0.02106961]
+2018-01-26 17:39:49,408 INFO    : train --- Current batch:800/1600  loss:[ 0.68022251]
+2018-01-26 17:40:22,683 INFO    : train --- Current batch:1000/1600  loss:[ 0.00504872]
+2018-01-26 17:40:55,911 INFO    : train --- Current batch:1200/1600  loss:[ 0.06994133]
+2018-01-26 17:41:29,303 INFO    : train --- Current batch:1400/1600  loss:[ 0.01762329]
+2018-01-26 17:42:02,635 INFO    : train --- Current batch:1600/1600  loss:[ 0.01582327]
+2018-01-26 17:42:02,698 INFO    : Save module: checkpoints/16_train_state.pth
+2018-01-26 17:42:18,061 INFO    : val --- Current batch:200/400  loss:[ 0.00086188]
+2018-01-26 17:42:28,992 INFO    : val --- Current batch:400/400  loss:[ 0.00124116]
+2018-01-26 17:42:28,993 INFO    : Epoch [16]/[24] 	 Loss: 0.00297139040752 	 Accuracy: 0.9885
+2018-01-26 17:42:29,074 INFO    : Save module: checkpoints/16_val_state.pth
+2018-01-26 17:43:02,434 INFO    : train --- Current batch:200/1600  loss:[ 0.14183882]
+2018-01-26 17:43:35,774 INFO    : train --- Current batch:400/1600  loss:[ 0.13784337]
+2018-01-26 17:44:09,357 INFO    : train --- Current batch:600/1600  loss:[ 0.1178125]
+2018-01-26 17:44:42,687 INFO    : train --- Current batch:800/1600  loss:[ 0.38001859]
+2018-01-26 17:45:15,889 INFO    : train --- Current batch:1000/1600  loss:[ 0.32908115]
+2018-01-26 17:45:49,622 INFO    : train --- Current batch:1200/1600  loss:[ 0.03536667]
+2018-01-26 17:46:22,902 INFO    : train --- Current batch:1400/1600  loss:[ 0.15326409]
+2018-01-26 17:46:56,145 INFO    : train --- Current batch:1600/1600  loss:[ 0.06401794]
+2018-01-26 17:46:56,274 INFO    : Save module: checkpoints/17_train_state.pth
+2018-01-26 17:47:10,998 INFO    : val --- Current batch:200/400  loss:[ 0.25839767]
+2018-01-26 17:47:22,691 INFO    : val --- Current batch:400/400  loss:[ 0.00206708]
+2018-01-26 17:47:22,692 INFO    : Epoch [17]/[24] 	 Loss: 0.00291857888848 	 Accuracy: 0.9888
+2018-01-26 17:47:22,765 INFO    : Save module: checkpoints/17_val_state.pth
+2018-01-26 17:47:56,278 INFO    : train --- Current batch:200/1600  loss:[ 0.00542965]
+2018-01-26 17:48:29,573 INFO    : train --- Current batch:400/1600  loss:[ 0.03404452]
+2018-01-26 17:49:02,738 INFO    : train --- Current batch:600/1600  loss:[ 0.15739231]
+2018-01-26 17:49:35,898 INFO    : train --- Current batch:800/1600  loss:[ 0.01089736]
+2018-01-26 17:50:09,359 INFO    : train --- Current batch:1000/1600  loss:[ 0.00366379]
+2018-01-26 17:50:42,924 INFO    : train --- Current batch:1200/1600  loss:[ 0.01059756]
+2018-01-26 17:51:16,608 INFO    : train --- Current batch:1400/1600  loss:[ 0.11453737]
+2018-01-26 17:51:49,799 INFO    : train --- Current batch:1600/1600  loss:[ 0.05312391]
+2018-01-26 17:51:50,436 INFO    : Save module: checkpoints/18_train_state.pth
+2018-01-26 17:52:02,095 INFO    : val --- Current batch:200/400  loss:[ 0.00109539]
+2018-01-26 17:52:15,317 INFO    : val --- Current batch:400/400  loss:[ 0.00765859]
+2018-01-26 17:52:15,317 INFO    : Epoch [18]/[24] 	 Loss: 0.00289170159186 	 Accuracy: 0.9880
+2018-01-26 17:52:15,375 INFO    : Save module: checkpoints/18_val_state.pth
+2018-01-26 17:52:48,869 INFO    : train --- Current batch:200/1600  loss:[ 0.15386769]
+2018-01-26 17:53:22,021 INFO    : train --- Current batch:400/1600  loss:[ 0.00891346]
+2018-01-26 17:53:55,535 INFO    : train --- Current batch:600/1600  loss:[ 0.06517632]
+2018-01-26 17:54:29,094 INFO    : train --- Current batch:800/1600  loss:[ 0.01429321]
+2018-01-26 17:55:02,368 INFO    : train --- Current batch:1000/1600  loss:[ 0.01196339]
+2018-01-26 17:55:35,726 INFO    : train --- Current batch:1200/1600  loss:[ 0.21378915]
+2018-01-26 17:56:09,134 INFO    : train --- Current batch:1400/1600  loss:[ 0.09540343]
+2018-01-26 17:56:42,428 INFO    : train --- Current batch:1600/1600  loss:[ 0.04578549]
+2018-01-26 17:56:42,482 INFO    : Save module: checkpoints/19_train_state.pth
+2018-01-26 17:56:56,278 INFO    : val --- Current batch:200/400  loss:[ 0.09256002]
+2018-01-26 17:57:08,417 INFO    : val --- Current batch:400/400  loss:[ 0.00059359]
+2018-01-26 17:57:08,417 INFO    : Epoch [19]/[24] 	 Loss: 0.00293660376742 	 Accuracy: 0.9882
+2018-01-26 17:57:08,861 INFO    : Save module: checkpoints/19_val_state.pth
+2018-01-26 17:57:41,901 INFO    : train --- Current batch:200/1600  loss:[ 0.01702004]
+2018-01-26 17:58:15,237 INFO    : train --- Current batch:400/1600  loss:[ 0.1114196]
+2018-01-26 17:58:48,684 INFO    : train --- Current batch:600/1600  loss:[ 0.09549899]
+2018-01-26 17:59:22,105 INFO    : train --- Current batch:800/1600  loss:[ 0.02834138]
+2018-01-26 17:59:55,576 INFO    : train --- Current batch:1000/1600  loss:[ 0.11322036]
+2018-01-26 18:00:28,780 INFO    : train --- Current batch:1200/1600  loss:[ 0.1019391]
+2018-01-26 18:01:02,110 INFO    : train --- Current batch:1400/1600  loss:[ 0.02039022]
+2018-01-26 18:01:35,290 INFO    : train --- Current batch:1600/1600  loss:[ 0.07194002]
+2018-01-26 18:01:35,352 INFO    : Save module: checkpoints/20_train_state.pth
+2018-01-26 18:01:48,217 INFO    : val --- Current batch:200/400  loss:[ 0.00097096]
+2018-01-26 18:01:58,146 INFO    : val --- Current batch:400/400  loss:[ 0.00028825]
+2018-01-26 18:01:58,147 INFO    : Epoch [20]/[24] 	 Loss: 0.00288932030324 	 Accuracy: 0.9885
+2018-01-26 18:01:58,194 INFO    : Save module: checkpoints/20_val_state.pth
+2018-01-26 18:02:32,188 INFO    : train --- Current batch:200/1600  loss:[ 0.0038708]
+2018-01-26 18:03:05,499 INFO    : train --- Current batch:400/1600  loss:[ 0.07210188]
+2018-01-26 18:03:38,613 INFO    : train --- Current batch:600/1600  loss:[ 0.03009792]
+2018-01-26 18:04:12,094 INFO    : train --- Current batch:800/1600  loss:[ 0.0506912]
+2018-01-26 18:04:45,499 INFO    : train --- Current batch:1000/1600  loss:[ 0.52642667]
+2018-01-26 18:05:19,292 INFO    : train --- Current batch:1200/1600  loss:[ 0.00350173]
+2018-01-26 18:05:52,754 INFO    : train --- Current batch:1400/1600  loss:[ 0.02235954]
+2018-01-26 18:06:26,173 INFO    : train --- Current batch:1600/1600  loss:[ 0.00567728]
+2018-01-26 18:06:26,249 INFO    : Save module: checkpoints/21_train_state.pth
+2018-01-26 18:06:38,216 INFO    : val --- Current batch:200/400  loss:[ 0.2094932]
+2018-01-26 18:06:53,909 INFO    : val --- Current batch:400/400  loss:[ 0.00067701]
+2018-01-26 18:06:53,910 INFO    : Epoch [21]/[24] 	 Loss: 0.00291135722514 	 Accuracy: 0.9885
+2018-01-26 18:06:53,970 INFO    : Save module: checkpoints/21_val_state.pth
+2018-01-26 18:07:27,384 INFO    : train --- Current batch:200/1600  loss:[ 0.00584404]
+2018-01-26 18:08:00,599 INFO    : train --- Current batch:400/1600  loss:[ 0.00953966]
+2018-01-26 18:08:33,974 INFO    : train --- Current batch:600/1600  loss:[ 0.09067532]
+2018-01-26 18:09:07,556 INFO    : train --- Current batch:800/1600  loss:[ 0.14052832]
+2018-01-26 18:09:40,769 INFO    : train --- Current batch:1000/1600  loss:[ 0.22281155]
+2018-01-26 18:10:14,183 INFO    : train --- Current batch:1200/1600  loss:[ 0.00270468]
+2018-01-26 18:10:47,477 INFO    : train --- Current batch:1400/1600  loss:[ 0.00240246]
+2018-01-26 18:11:20,908 INFO    : train --- Current batch:1600/1600  loss:[ 0.08346927]
+2018-01-26 18:11:21,554 INFO    : Save module: checkpoints/22_train_state.pth
+2018-01-26 18:11:35,608 INFO    : val --- Current batch:200/400  loss:[ 0.00503118]
+2018-01-26 18:11:45,480 INFO    : val --- Current batch:400/400  loss:[  8.44955430e-05]
+2018-01-26 18:11:45,480 INFO    : Epoch [22]/[24] 	 Loss: 0.00286108516504 	 Accuracy: 0.9892
+2018-01-26 18:11:45,531 INFO    : Save module: checkpoints/22_val_state.pth
+2018-01-26 18:12:18,900 INFO    : train --- Current batch:200/1600  loss:[ 0.0109074]
+2018-01-26 18:12:52,228 INFO    : train --- Current batch:400/1600  loss:[ 0.1186721]
+2018-01-26 18:13:25,678 INFO    : train --- Current batch:600/1600  loss:[ 0.06423734]
+2018-01-26 18:13:58,937 INFO    : train --- Current batch:800/1600  loss:[ 0.10465534]
+2018-01-26 18:14:32,380 INFO    : train --- Current batch:1000/1600  loss:[ 0.05360199]
+2018-01-26 18:15:05,804 INFO    : train --- Current batch:1200/1600  loss:[ 0.030624]
+2018-01-26 18:15:39,139 INFO    : train --- Current batch:1400/1600  loss:[ 0.02086627]
+2018-01-26 18:16:12,699 INFO    : train --- Current batch:1600/1600  loss:[ 0.1325198]
+2018-01-26 18:16:12,764 INFO    : Save module: checkpoints/23_train_state.pth
+2018-01-26 18:16:28,057 INFO    : val --- Current batch:200/400  loss:[ 0.00204966]
+2018-01-26 18:16:37,806 INFO    : val --- Current batch:400/400  loss:[ 0.00622163]
+2018-01-26 18:16:37,806 INFO    : Epoch [23]/[24] 	 Loss: 0.0028806009616 	 Accuracy: 0.9885
+2018-01-26 18:16:38,260 INFO    : Save module: checkpoints/23_val_state.pth
+2018-01-26 18:17:11,899 INFO    : train --- Current batch:200/1600  loss:[ 0.23619287]
+2018-01-26 18:17:44,973 INFO    : train --- Current batch:400/1600  loss:[ 0.01509714]
+2018-01-26 18:18:18,512 INFO    : train --- Current batch:600/1600  loss:[ 0.0484347]
+2018-01-26 18:18:51,903 INFO    : train --- Current batch:800/1600  loss:[ 0.01737862]
+2018-01-26 18:19:25,275 INFO    : train --- Current batch:1000/1600  loss:[ 0.06655816]
+2018-01-26 18:19:58,695 INFO    : train --- Current batch:1200/1600  loss:[ 0.02978905]
+2018-01-26 18:20:32,281 INFO    : train --- Current batch:1400/1600  loss:[ 0.00636693]
+2018-01-26 18:21:05,920 INFO    : train --- Current batch:1600/1600  loss:[ 0.01729228]
+2018-01-26 18:21:05,972 INFO    : Save module: checkpoints/24_train_state.pth
+2018-01-26 18:21:21,786 INFO    : val --- Current batch:200/400  loss:[ 0.52679473]
+2018-01-26 18:21:32,644 INFO    : val --- Current batch:400/400  loss:[ 0.00274711]
+2018-01-26 18:21:32,644 INFO    : Epoch [24]/[24] 	 Loss: 0.00290508350656 	 Accuracy: 0.9892
+2018-01-26 18:21:32,690 INFO    : Save module: checkpoints/24_val_state.pth
+2018-01-26 18:21:32,690 INFO    : Training complete in 121m 48s
+2018-01-26 18:21:32,691 INFO    : Best validate accuracy: 0.9892
