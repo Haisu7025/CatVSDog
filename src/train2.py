@@ -59,8 +59,10 @@ def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, nu
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects / dataset_sizes[phase]
 
+            if phase == 'train':
+                log.info('Epoch [{}]/[{}] \t Training Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
             if phase == 'val':
-                log.info('Epoch [{}]/[{}] \t Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
+                log.info('Epoch [{}]/[{}] \t Validation Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
 
             if phase == 'val' and epoch_acc > best_acc:
                 best_acc = epoch_acc
@@ -68,7 +70,7 @@ def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, nu
 
             torch.save(model.state_dict(), 'checkpoints/{}_{}_state.pth'.format(epoch, phase))
             log.info('Save module: checkpoints/{}_{}_state.pth'.format(epoch, phase))
-            
+
     time_elapsed = time.time() - stime
     log.info('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
     log.info('Best validate accuracy: {:.4f}'.format(best_acc))
@@ -99,7 +101,7 @@ def main():
     dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
 
     # model
-    model = models.resnet18(pretrained=True)
+    model = models.resnet18(pretrained=False)
     num_frts = model.fc.in_features
     model.fc = torch.nn.Linear(num_frts, 2)
 
@@ -112,7 +114,7 @@ def main():
         model = model.cuda()
         # criterion = criterion.cuda()
 
-    model = train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler)
+    model = train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, 200)
     torch.save(model.state_dict(), 'trained_models/best_model.pth')
 
 if __name__ == '__main__':
