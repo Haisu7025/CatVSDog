@@ -14,13 +14,13 @@ from torch.optim import lr_scheduler
 
 log = logger.init_logger('resnet')
 
-def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, num_epochs = 25):
+def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, start_epoch = 0, end_epochs = 200):
     stime = time.time()
     
     best_model_state = model.state_dict()
     best_acc = 0.0
 
-    for epoch in range(num_epochs):        
+    for epoch in range(start_epoch, end_epochs):        
         for phase in ['train', 'val']:
             if phase == 'train':
                 scheduler.step()
@@ -60,9 +60,9 @@ def train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, nu
             epoch_acc = running_corrects / dataset_sizes[phase]
 
             if phase == 'train':
-                log.info('Epoch [{}]/[{}] \t Training Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
+                log.info('Epoch [{}]/[{}] \t Training Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, end_epochs - 1, epoch_loss, epoch_acc))
             if phase == 'val':
-                log.info('Epoch [{}]/[{}] \t Validation Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, num_epochs - 1, epoch_loss, epoch_acc))
+                log.info('Epoch [{}]/[{}] \t Validation Phase Loss: {} \t Accuracy: {:.4f}'.format(epoch, end_epochs - 1, epoch_loss, epoch_acc))
 
             if phase == 'val' and epoch_acc > best_acc:
                 best_acc = epoch_acc
@@ -114,7 +114,11 @@ def main():
         model = model.cuda()
         # criterion = criterion.cuda()
 
-    model = train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, 200)
+    init_model = 'checkpoints/249_val_state.pth'
+    if init_model != '':
+        model.load_state_dict(torch.load(init_model))
+
+    model = train(dataloaders, dataset_sizes, model, criterion, optimizer, scheduler, 250, 300)
     torch.save(model.state_dict(), 'trained_models/best_model.pth')
 
 if __name__ == '__main__':
